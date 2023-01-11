@@ -8,7 +8,7 @@ const tokenQL = `{
   decimals
 }`
 
-export async function latestCakePairs(count = 10) {
+export async function latestCakePairs(count = 20) {
   const data = await cakeGql<{ pairs: Pari[] }>(`{
     pairs(first:${count}, orderBy:timestamp, orderDirection: desc){
       id
