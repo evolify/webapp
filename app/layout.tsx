@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-head-element */
-import "styles/uno.css"
+// import "styles/uno.css"
 // import "styles/theme.css"
 import "./style.scss"
 
