@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "dev:uno": "concurrently \"next dev --turbo\" \"npm run uno -- --watch\"",
-    "uno": "unocss 'app/**/*.tsx' --out-file=styles/uno.css"
+    "dev": "vite dev",
+    "preview": "vite preview",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -28,25 +26,17 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
-    "concurrently": "7.5.0",
-    "dayjs": "^1.11.7",
-    "next": "latest",
-    "next-pwa": "^5.6.0",
+    "dayjs": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/node": "18.0.3",
-    "@types/react": "18.0.15",
-    "@types/react-dom": "18.0.6",
-    "@unocss/cli": "^0.46.5",
-    "@unocss/preset-icons": "^0.46.5",
-    "@unocss/webpack": "^0.46.5",
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.19.0",
-    "eslint-config-next": "latest",
-    "sass": "^1.56.1",
-    "typescript": "4.7.4",
-    "unocss": "^0.46.5"
+    "vite": "latest",
+    "@vitejs/plugin-react": "latest",
+    "vite-plugin-pwa": "latest",
+    "sass": "latest",
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
   }
 }

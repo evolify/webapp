@@ -11,10 +11,9 @@ import {
   Box,
 } from "@mui/material"
 import { Pari, Token } from "../../types"
-import { getUrl, to } from "app/crypto/utils"
+import { getUrl, to } from "../../utils"
 import dayjs from "dayjs"
-import React from "react"
-import { copy } from "utils"
+import { copy } from "common/utils"
 
 function IconButton(props: IconButtonProps) {
   return <_IconButton size="small" {...props} />

@@ -40,3 +40,6 @@ yarn-error.log*
 
 # unocss
 uno.css
+
+dist
+build

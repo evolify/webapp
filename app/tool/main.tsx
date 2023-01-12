@@ -1,6 +1,7 @@
-import React from "react"
+import { render } from "common/utils/index"
+import "./style.scss"
 
-export default function Home() {
+function Home() {
   return (
     <div>
       <h3 className="py-20">hello next</h3>
@@ -9,3 +10,5 @@ export default function Home() {
     </div>
   )
 }
+
+render(<Home />)

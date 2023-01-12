@@ -1,11 +1,13 @@
 "use client"
-import React from "react"
 import { Stack } from "@mui/material"
+import { render } from "common/utils/index"
 
-export default function App() {
+function App() {
   return (
     <Stack direction="column">
       <Stack>123222</Stack>
     </Stack>
   )
 }
+
+render(<App />)

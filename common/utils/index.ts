@@ -1,4 +1,5 @@
-import info from "@/ui/alert"
+import { info } from "common/ui/alert"
+import { createRoot } from "react-dom/client"
 
 export function copy(str: string) {
   const input = document.createElement("input")
@@ -10,4 +11,10 @@ export function copy(str: string) {
   document.execCommand("copy")
   document.body.removeChild(input)
   info("Copy to clipboard")
+}
+
+export function render(children: React.ReactNode) {
+  const container = document.querySelector("#app")
+  const root = createRoot(container!)
+  root.render(children)
 }

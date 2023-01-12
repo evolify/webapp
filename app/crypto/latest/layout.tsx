@@ -1,11 +1,10 @@
-"use client"
 import {
   createTheme,
   CssBaseline,
   ThemeProvider,
   useMediaQuery,
 } from "@mui/material"
-import React from "react"
+import { useMemo } from "react"
 import "./style.scss"
 
 export default function Layout({
@@ -15,7 +14,7 @@ export default function Layout({
   function color(light: string, dark: string) {
     return darkMode ? dark : light
   }
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       createTheme({
         palette: {

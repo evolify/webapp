@@ -1,8 +1,7 @@
 import { Box, CircularProgress, Stack } from "@mui/material"
-import { latestCakePairs } from "app/crypto/api"
+import { latestCakePairs } from "../../api"
 import { Pari } from "../../types"
-import { useData } from "hooks/api"
-import React from "react"
+import { useData } from "common/hooks/api"
 import PairCard from "../components/pair"
 
 export default function Content() {

@@ -40,7 +40,7 @@ function AlertModal({ children, visible }: Props) {
   )
 }
 
-export default function info(msg: string, duration = 2000) {
+export function info(msg: string, duration = 2000) {
   const root = ensureRoot()
   root.render(<AlertModal visible={true}>{msg}</AlertModal>)
   setTimeout(() => {

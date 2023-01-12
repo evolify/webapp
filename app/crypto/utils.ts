@@ -1,4 +1,4 @@
-import { gql } from "utils/request"
+import { gql } from "common/utils/request"
 
 export function uniswapGql(query: string) {
   return gql(
