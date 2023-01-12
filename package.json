@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "preview": "vite preview",
-    "build": "vite build && ls dist"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
