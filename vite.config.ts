@@ -10,6 +10,7 @@ export default defineConfig({
       common: resolve("common/"),
     },
   },
+  publicDir: resolve("public"),
   root: "app/",
   server: {
     port: 3000,
@@ -34,6 +35,9 @@ export default defineConfig({
       manifest: {
         name: "webapp",
         short_name: "app",
+        description: "My Webapp",
+        theme_color: "#f7f7f7",
+        start_url: "crypto/latest/index.html",
         icons: [
           {
             src: "/icon.png",
