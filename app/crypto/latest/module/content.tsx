@@ -1,5 +1,4 @@
-import { Refresh } from "@mui/icons-material"
-import { Box, Stack } from "@mui/material"
+import { Box, CircularProgress, Stack } from "@mui/material"
 import { latestCakePairs } from "app/crypto/api"
 import { Pari } from "../../types"
 import { useData } from "hooks/api"
@@ -9,7 +8,11 @@ import PairCard from "../components/pair"
 export default function Content() {
   const { data, loading, error } = useData<Pari[]>(latestCakePairs())
   if (!data) {
-    return <Refresh />
+    return (
+      <Stack mt={4} alignItems="center" justifyContent="center">
+        <CircularProgress />
+      </Stack>
+    )
   }
   return (
     <Stack>

@@ -3,12 +3,12 @@ const withPWA = require("next-pwa")({
 })
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withPWA({
+const nextConfig = {
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   swcMinify: true,
   experimental: {
     appDir: true,
   },
-})
+}
 
 module.exports = nextConfig
