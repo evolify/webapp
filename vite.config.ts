@@ -27,6 +27,10 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      registerType: "autoUpdate",
+      devOptions: {
+        enabled: true,
+      },
       manifest: {
         name: "webapp",
         short_name: "app",
