@@ -4,7 +4,7 @@ import Content from "./module/content"
 
 export default function App() {
   return (
-    <Stack p={2} pt="46px">
+    <Stack px={1} pt="46px" pb={3}>
       <Header>Latest</Header>
       <Content />
     </Stack>
