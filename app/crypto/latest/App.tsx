@@ -1,6 +1,7 @@
 import { Stack } from "@mui/material"
 import Header from "./module/header"
 import Content from "./module/content"
+import "../api"
 
 export default function App() {
   return (

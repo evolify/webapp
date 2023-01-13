@@ -1,15 +1,22 @@
-import { Pari } from "./types"
-import { cakeGql } from "./utils"
+import { Pair } from "./types"
+import { cakeGql, pairsGql } from "./utils"
 
 const tokenQL = `{
   id
   name
   symbol
   decimals
+  totalTransactions 
+  tradeVolume 
+  tradeVolumeUSD 
+  untrackedVolumeUSD 
+  totalLiquidity 
+  derivedBNB
+  derivedUSD 
 }`
 
 export async function latestCakePairs(count = 20) {
-  const data = await cakeGql<{ pairs: Pari[] }>(`{
+  const data = await pairsGql<{ pairs: Pair[] }>(`{
     pairs(first:${count}, orderBy:timestamp, orderDirection: desc){
       id
       name
@@ -18,5 +25,37 @@ export async function latestCakePairs(count = 20) {
       token1${tokenQL}
     }
    }`)
+  return data.pairs
+}
+
+export async function getLatestPairs(count = 30) {
+  const { pairs } = await pairsGql<{ pairs: Pair[] }>(`{
+    pairs(first:${count}, orderBy:timestamp, orderDirection: desc){
+      id
+    }
+  }`)
+  const ids = `[${pairs.map(t => `"${t.id}"`).join(",")}]`
+  const data = await cakeGql<{ pairs: Pair[] }>(`{
+    pairs(where: {id_in: ${ids}}){
+      id
+      name
+      timestamp
+      totalTransactions
+      volumeToken0
+      volumeToken1
+      volumeUSD
+      reserve0
+      reserve1
+      totalSupply
+      reserveBNB
+      reserveUSD
+      trackedReserveBNB
+      token0Price
+      token1Price
+      untrackedVolumeUSD
+      token0${tokenQL}
+      token1${tokenQL}
+    }
+  }`)
   return data.pairs
 }

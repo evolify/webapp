@@ -1,11 +1,11 @@
 import { Box, CircularProgress, Stack } from "@mui/material"
-import { latestCakePairs } from "../../api"
-import { Pari } from "../../types"
+import { getLatestPairs } from "../../api"
+import { Pair } from "../../types"
 import { useData } from "common/hooks/api"
 import PairCard from "../components/pair"
 
 export default function Content() {
-  const { data, loading, error } = useData<Pari[]>(latestCakePairs())
+  const { data, loading, error } = useData<Pair[]>(getLatestPairs)
   if (!data) {
     return (
       <Stack mt={4} alignItems="center" justifyContent="center">

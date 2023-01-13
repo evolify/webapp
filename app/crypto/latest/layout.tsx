@@ -26,6 +26,8 @@ export default function Layout({
       }),
     [darkMode]
   )
+
+  console.log(theme)
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
