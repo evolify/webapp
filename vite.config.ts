@@ -3,6 +3,16 @@ import react from "@vitejs/plugin-react"
 import { VitePWA } from "vite-plugin-pwa"
 import { resolve } from "path"
 
+function getInput(...dirs: string[]) {
+  const input = {
+    main: "app/index.html",
+  }
+  dirs.forEach(t => {
+    input[t] = `app/${t}/index.html`
+  })
+  return input
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
@@ -18,11 +28,7 @@ export default defineConfig({
   build: {
     outDir: resolve("dist"),
     rollupOptions: {
-      input: {
-        main: "app/index.html",
-        crypto: "app/crypto/index.html",
-        "crypto/latest": "app/crypto/latest/index.html",
-      },
+      input: getInput("crypto", "crypto/latest", "crypto/track"),
     },
   },
   plugins: [

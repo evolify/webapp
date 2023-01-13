@@ -59,3 +59,28 @@ export async function getLatestPairs(count = 30) {
   }`)
   return data.pairs
 }
+// where: {from_in:["${address}"]}
+export async function getSwaps(address: string) {
+  const data = await cakeGql(`{
+    swaps(first: 20, where: {from_in:["${address}"]}){
+      id
+      sender
+      from
+      to
+      amountUSD
+      timestamp
+      token0{
+        id
+        symbol
+      }
+      token1{
+        id
+        symbol
+      }
+      transaction{
+        id
+      }
+    }
+  }`)
+  console.log(data)
+}

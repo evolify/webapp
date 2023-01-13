@@ -44,6 +44,10 @@ export function to(url: string) {
   window.open(url)
 }
 
+export function viewAddress(address: string) {
+  window.open(`https://bscscan.com/address/${address}`)
+}
+
 export function formatNumber(num: string | number) {
   const input = +num
   if (input > 1e9) {
