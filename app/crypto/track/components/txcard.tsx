@@ -25,7 +25,6 @@ interface Props {
 export default function TxCard({ data, address }: Props) {
   const { from, to, functionName, hash } = data
   const isReceive = to.toLowerCase() === address.toLowerCase()
-  console.log(isReceive)
   const method = functionName.replace(/\(.*$/g, "") || "Transfer"
   const details = `https://bscscan.com/tx/${hash}`
   return (
