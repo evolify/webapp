@@ -4,7 +4,7 @@ import React from "react"
 export default function Loading() {
   return (
     <Stack mt={4} alignItems="center" justifyContent="center">
-      <CircularProgress />
+      <CircularProgress size={30} color="warning" />
     </Stack>
   )
 }

@@ -1,17 +1,9 @@
 "use client"
-import {
-  ArrowForwardIos,
-  ArrowRight,
-  KeyboardArrowRight,
-  Tab,
-} from "@mui/icons-material"
+import { KeyboardArrowRight, Tab } from "@mui/icons-material"
 import {
   Card,
   CardActionArea,
-  CardActions,
-  CardContent,
   Unstable_Grid2 as Grid,
-  Stack,
   Typography,
   CardHeader,
   IconButton,
@@ -22,12 +14,12 @@ import Layout from "./layout/index"
 const list = [
   {
     name: "Latest List",
-    url: "crypto/latest/index.html",
+    url: "/crypto/latest/index.html",
     desc: "The latest list tokens",
   },
   {
     name: "Wallet Tracker",
-    url: "crypto/tracker/index.html",
+    url: "/crypto/tracker/index.html",
     desc: "Track wallet actions",
   },
   {
@@ -84,15 +76,6 @@ function App() {
                     </>
                   }
                 />
-                {/* <Stack direction="row" alignItems="center">
-                  <Stack>
-                    <Typography>{t.name}</Typography>
-                    <Typography variant="caption" whiteSpace="nowrap">
-                      {t.desc}
-                    </Typography>
-                  </Stack>
-                  <KeyboardArrowRight color="action" sx={{ ml: "auto" }} />
-                </Stack> */}
               </CardActionArea>
             </Card>
           </Grid>
