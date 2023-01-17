@@ -19,7 +19,7 @@ const list = [
   },
   {
     name: "Wallet Tracker",
-    url: "/crypto/tracker/index.html",
+    url: "/crypto/track/index.html",
     desc: "Track wallet actions",
   },
   {
