@@ -1,9 +1,4 @@
-import {
-  CopyAllOutlined,
-  Height,
-  Sensors,
-  ShowChart,
-} from "@mui/icons-material"
+import { Code, CopyAllOutlined, Sensors, ShowChart } from "@mui/icons-material"
 import {
   Card,
   CardContent,
@@ -15,8 +10,6 @@ import {
   Divider,
   Box,
   Stack,
-  Chip,
-  Avatar,
 } from "@mui/material"
 import { Pair, Token } from "../../types"
 import { formatNumber, getUrl, to } from "../../utils"
@@ -110,6 +103,9 @@ export default function PairCard({ data }: Props) {
         </IconButton>
         <IconButton onClick={() => to(urls.bscscan)}>
           <Sensors />
+        </IconButton>
+        <IconButton onClick={() => to(urls.code)}>
+          <Code />
         </IconButton>
         <IconButton onClick={() => copy(token.id)}>
           <CopyAllOutlined />

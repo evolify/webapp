@@ -37,6 +37,7 @@ export function getUrl(token: string) {
   return {
     ave: `https://m.ave.ai/token/${token}-bsc`,
     bscscan: `https://bscscan.com/token/${token}`,
+    code: `https://bscscan.deth.net/token/${token}`,
   }
 }
 

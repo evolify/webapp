@@ -1,12 +1,104 @@
 "use client"
-import { Stack } from "@mui/material"
+import {
+  ArrowForwardIos,
+  ArrowRight,
+  KeyboardArrowRight,
+  Tab,
+} from "@mui/icons-material"
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  Unstable_Grid2 as Grid,
+  Stack,
+  Typography,
+  CardHeader,
+  IconButton,
+} from "@mui/material"
 import { render } from "common/utils/index"
+import Layout from "./layout/index"
+
+const list = [
+  {
+    name: "Latest List",
+    url: "crypto/latest/index.html",
+    desc: "The latest list tokens",
+  },
+  {
+    name: "Wallet Tracker",
+    url: "crypto/tracker/index.html",
+    desc: "Track wallet actions",
+  },
+  {
+    name: "Trade",
+    url: "https://trade-bsc.vercel.app",
+    desc: "Swap tokens in trade-bsc",
+  },
+  {
+    name: "Ave.ai",
+    url: "https://m.ave.ai",
+    desc: "Launch ave.ai",
+  },
+  {
+    name: "Pancake Swap",
+    url: "https://pancakeswap.finance/swap",
+    desc: "Swap tokens in Pancake Swap",
+  },
+  {
+    name: "1inch Swap",
+    url: "https://app.1inch.io/",
+    desc: "Swap tokens in 1inch Swap",
+  },
+]
+
+function to(url: string) {
+  location.href = url
+}
+
+function newTab(url: string) {
+  window.open(url)
+}
 
 function App() {
   return (
-    <Stack direction="column">
-      <Stack>123222</Stack>
-    </Stack>
+    <Layout title="crypto">
+      <Grid container spacing={1}>
+        {list.map(t => (
+          <Grid xs={12} sm={6} md={4} key={t.name}>
+            <Card sx={{ borderRadius: 2 }}>
+              <CardActionArea onClick={() => to(t.url)}>
+                <CardHeader
+                  title={<Typography>{t.name}</Typography>}
+                  subheader={
+                    <Typography variant="caption">{t.desc}</Typography>
+                  }
+                  action={
+                    <>
+                      <IconButton onClick={() => newTab(t.url)}>
+                        <Tab color="action" />
+                      </IconButton>
+                      <IconButton>
+                        <KeyboardArrowRight color="action" />
+                      </IconButton>
+                    </>
+                  }
+                />
+                {/* <Stack direction="row" alignItems="center">
+                  <Stack>
+                    <Typography>{t.name}</Typography>
+                    <Typography variant="caption" whiteSpace="nowrap">
+                      {t.desc}
+                    </Typography>
+                  </Stack>
+                  <KeyboardArrowRight color="action" sx={{ ml: "auto" }} />
+                </Stack> */}
+              </CardActionArea>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Layout>
   )
 }
 

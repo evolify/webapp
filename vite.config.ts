@@ -39,11 +39,11 @@ export default defineConfig({
         enabled: true,
       },
       manifest: {
-        name: "webapp",
-        short_name: "app",
-        description: "My Webapp",
-        theme_color: "#f7f7f7",
-        start_url: "crypto/latest/index.html",
+        name: "Crypto",
+        short_name: "crypto",
+        description: "My Crypto Webapp",
+        theme_color: "#000000",
+        start_url: "crypto/index.html",
         icons: [
           {
             src: "/icon.png",
