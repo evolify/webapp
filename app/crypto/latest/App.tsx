@@ -1,13 +1,21 @@
-import { Stack } from "@mui/material"
-import Header from "./module/header"
-import Content from "./module/content"
-import "../api"
+import { Box, Stack } from "@mui/material"
+import { getLatestPairs } from "../api"
+import { Pair } from "../types"
+import { useData } from "common/hooks/api"
+import PairCard from "./components/pair"
+import { WithLoading } from "common/ui/loading"
 
-export default function App() {
+export default function Content() {
+  const { data, loading, error } = useData<Pair[]>(getLatestPairs)
   return (
-    <Stack px={1} pt="46px" pb={3}>
-      <Header>Latest</Header>
-      <Content />
-    </Stack>
+    <WithLoading loading={loading}>
+      <Stack>
+        {data?.map(t => (
+          <Box my={0.5} key={t.id}>
+            <PairCard data={t} />
+          </Box>
+        ))}
+      </Stack>
+    </WithLoading>
   )
 }
