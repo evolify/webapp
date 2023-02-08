@@ -28,7 +28,7 @@ export default defineConfig({
   build: {
     outDir: resolve("dist"),
     rollupOptions: {
-      input: getInput("crypto", "crypto/latest", "crypto/track"),
+      input: getInput("crypto", "crypto/latest", "crypto/track", "crypto/arb"),
     },
   },
   plugins: [

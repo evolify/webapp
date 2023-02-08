@@ -13,6 +13,11 @@ import Layout from "./layout/index"
 
 const list = [
   {
+    name: "Latest Arb List",
+    url: "/crypto/arb/index.html",
+    desc: "The latest Arb tokens",
+  },
+  {
     name: "Latest List",
     url: "/crypto/latest/index.html",
     desc: "The latest list tokens",

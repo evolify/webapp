@@ -21,6 +21,20 @@ export async function pairsGql<T>(query: string): Promise<T> {
 }
 
 /**
+ * https://thegraph.com/hosted-service/subgraph/pancakeswap/pairs
+ * https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange
+ * @param query 
+ * @returns 
+ */
+export async function arbPairsGql<T>(query: string): Promise<T> {
+  const { data } = await gql<{ data: T }>(
+    "https://api.thegraph.com/subgraphs/name/sushiswap/arbitrum-exchange",
+    query
+  )
+  return data
+}
+
+/**
  * https://docs.nodereal.io/reference/pancakeswap-graphql-api
  * @param query 
  * @returns 
@@ -33,11 +47,20 @@ export async function cakeGql<T>(query: string): Promise<T> {
   return data
 }
 
-export function getUrl(token: string) {
-  return {
-    ave: `https://m.ave.ai/token/${token}-bsc`,
-    bscscan: `https://bscscan.com/token/${token}`,
-    code: `https://bscscan.deth.net/token/${token}`,
+export function getUrl(token: string, chain: "bsc" | "arb" = "bsc") {
+  switch (chain) {
+    case "arb":
+      return {
+        ave: `https://m.ave.ai/token/${token}-arbitrum`,
+        scan: `https://arbiscan.io/token/${token}`,
+        code: `https://arbiscan.deth.net/token/${token}`,
+      }
+    default:
+      return {
+        ave: `https://m.ave.ai/token/${token}-bsc`,
+        scan: `https://bscscan.com/token/${token}`,
+        code: `https://bscscan.deth.net/token/${token}`,
+      }
   }
 }
 

@@ -1,18 +1,11 @@
-import { Pair } from "./types"
-import { cakeGql, pairsGql } from "./utils"
+import { ArbPair, Pair } from "./types"
+import { arbPairsGql, cakeGql, pairsGql } from "./utils"
 
 const tokenQL = `{
   id
   name
   symbol
   decimals
-  totalTransactions 
-  tradeVolume 
-  tradeVolumeUSD 
-  untrackedVolumeUSD 
-  totalLiquidity 
-  derivedBNB
-  derivedUSD 
 }`
 
 export async function latestCakePairs(count = 20) {
@@ -59,6 +52,25 @@ export async function getLatestPairs(count = 30) {
   }`)
   return data.pairs
 }
+
+export async function getLatestArbPairs(count = 30) {
+  const { pairs } = await arbPairsGql<{ pairs: ArbPair[] }>(`{
+    pairs(first:${count}, orderBy:timestamp, orderDirection: desc){
+      id
+      reserve0
+      reserve1
+      reserveETH
+      reserveUSD
+      volumeUSD
+      txCount
+      timestamp
+      token0${tokenQL}
+      token1${tokenQL}
+    }
+  }`)
+  return pairs
+}
+
 // where: {from_in:["${address}"]}
 export async function getSwaps(address: string) {
   const data = await cakeGql(`{

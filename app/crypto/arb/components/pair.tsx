@@ -11,7 +11,7 @@ import {
   Box,
   Stack,
 } from "@mui/material"
-import { Pair, Token } from "../../types"
+import { ArbPair, Token } from "../../types"
 import { formatNumber, getUrl, to } from "../../utils"
 import dayjs from "dayjs"
 import { copy } from "common/utils"
@@ -21,11 +21,11 @@ function IconButton(props: IconButtonProps) {
 }
 
 interface Props {
-  data: Pair
+  data: ArbPair
 }
 
 function formatTokens(token0: Token, token1: Token) {
-  if (["WBNB", "USDT", "BUSD"].some(t => t === token1.symbol)) {
+  if (["WETH", "USDT", "USDC"].some(t => t === token1.symbol)) {
     return [token1, token0]
   }
   return [token0, token1]
@@ -48,7 +48,7 @@ function mainColor(highlight = false) {
 export default function PairCard({ data }: Props) {
   const { id, name, timestamp, token0, token1, reserveUSD } = data
   const [base, token] = formatTokens(token0, token1)
-  const urls = getUrl(token.id)
+  const urls = getUrl(token.id, "arb")
   const { bgColor, borderColor } = mainColor(reserveUSD > 0)
   return (
     <Card
@@ -79,7 +79,7 @@ export default function PairCard({ data }: Props) {
       <CardContent sx={{ px: 2, py: 0.5 }}>
         <Stack direction="row" alignItems="center">
           <Typography whiteSpace="nowrap" variant="caption">
-            txCount: {data.totalTransactions}
+            txCount: {data.txCount}
           </Typography>
           <Typography ml={2} whiteSpace="nowrap" variant="caption">
             24H value: {formatNumber(data.volumeUSD)}
@@ -136,7 +136,7 @@ export default function PairCard({ data }: Props) {
             variant="caption"
             whiteSpace="nowrap"
           >
-            {formatNumber(data.reserveBNB)} B
+            {formatNumber(data.reserveETH)} E
           </Typography>
         </Stack>
       </CardActions>
