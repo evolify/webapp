@@ -1,20 +1,21 @@
-import { info } from "common/ui/alert"
-import { createRoot } from "react-dom/client"
+import { toast } from "sonner"
 
-export function copy(str: string) {
-  const input = document.createElement("input")
-  input.value = str
-  input.style.position = "fixed"
-  input.style.bottom = "-100px"
-  document.body.appendChild(input)
-  input.select()
-  document.execCommand("copy")
-  document.body.removeChild(input)
-  info("Copy to clipboard")
+export const isDev = process.env.NODE_ENV !== "production"
+
+export async function copy(text: string) {
+  try {
+    await navigator.clipboard.writeText(text)
+    toast.success("Copied to clipboard")
+  } catch (err) {
+    console.error(err)
+  }
 }
 
-export function render(children: React.ReactNode) {
-  const container = document.querySelector("#app")
-  const root = createRoot(container!)
-  root.render(children)
+export function getQuery<T>(key: string, defaultValue?: T) {
+  const urlParams = new URLSearchParams(window.location.search)
+  return (urlParams.get(key) as T) || defaultValue
+}
+
+export function isNumber(value: string) {
+  return !isNaN(Number(value))
 }
