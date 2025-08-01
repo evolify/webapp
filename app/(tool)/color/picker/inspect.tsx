@@ -3,42 +3,12 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Pipette } from "lucide-react"
 import { useState } from "react"
-import { toast } from "sonner"
-import { copy } from "./store"
-
-declare class EyeDropper {
-  open(): Promise<{ sRGBHex: string }>
-}
-declare global {
-  interface Window {
-    EyeDropper?: {
-      new (): EyeDropper
-    }
-  }
-}
+import { pickColor } from "./store"
 
 export default function Inspect() {
   const [bg, setBg] = useState("#222")
   const [fg, setFg] = useState("#eee")
   const [border, setBorder] = useState("#444")
-  async function pickColor() {
-    if (!window.EyeDropper) {
-      console.warn("Your browser does not support the EyeDropper API")
-      toast.warning("Your browser does not support the EyeDropper API")
-      return null
-    }
-    const eyeDropper = new EyeDropper()
-    try {
-      const result = await eyeDropper.open()
-      console.log(result)
-      const color = result.sRGBHex
-      copy(color)
-      return color
-    } catch (e) {
-      console.error(e)
-      return null
-    }
-  }
 
   async function pickBg() {
     const color = await pickColor()

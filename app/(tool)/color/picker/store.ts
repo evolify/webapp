@@ -1,5 +1,6 @@
 import Store from "@evolify/tiny/store"
 import { copy as copyText, startViewTransition } from "@/utils"
+import { pickColor as _pickColor } from "@/utils/color"
 
 const COLOR_HISTORY_KEY = "color-history"
 
@@ -21,13 +22,13 @@ const initStore = {
 
 const store = new Store(initStore)
 
-export function initHistory(){
-  store.update({history: readHistory()})
+export function initHistory() {
+  store.update({ history: readHistory() })
 }
 
 export function copy(color: string, addToHistory = true) {
   copyText(color)
-  startViewTransition(()=> {
+  startViewTransition(() => {
     store.update({ current: color })
     if (addToHistory) {
       addHistory(color)
@@ -50,3 +51,11 @@ export function clearHistory() {
 }
 
 export const useStore = store.use
+
+export async function pickColor() {
+  const color = await _pickColor()
+  if (color) {
+    copy(color)
+  }
+  return color
+}
