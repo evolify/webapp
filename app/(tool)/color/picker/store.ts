@@ -37,7 +37,7 @@ export function copy(color: string, addToHistory = true) {
 
 export function addHistory(color: string) {
   store.update(state => {
-    const history = [color].concat(state.history).slice(0, 20)
+    const history = [color].concat(state.history).slice(0, 24)
     saveHistory(history)
     return {
       history,

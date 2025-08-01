@@ -9,14 +9,14 @@ import { useStore } from "./store"
 export default function ColorPalette() {
   const current = useStore(state => state.current)
   return (
-    <div className="flex flex-col gap-4">
-
+    <div className="flex flex-col gap-4 max-w-250 mx-auto">
       <HeaderRight>
-        {
-          current && (
-            <div className="w-18 h-8 rounded-md" style={{backgroundColor: current}}></div>
-          )
-        }
+        {current && (
+          <div
+            className="w-18 h-8 rounded-md"
+            style={{ backgroundColor: current }}
+          ></div>
+        )}
       </HeaderRight>
       <div className="flex gap-4 h-120">
         <Palette />
