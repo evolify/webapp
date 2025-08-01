@@ -18,7 +18,7 @@ import { ChevronRight } from "lucide-react"
 
 export interface AppSidebarItem {
   title: string
-  url: string
+  url?: string
   icon: React.ElementType
   collapsed?: boolean
   children?: AppSidebarItem[]

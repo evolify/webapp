@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@evolify/tiny':
+        specifier: ^0.3.0
+        version: 0.3.0(react@19.1.0)
       '@radix-ui/react-collapsible':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -122,6 +125,11 @@ packages:
 
   '@emnapi/runtime@1.4.4':
     resolution: {integrity: sha512-hHyapA4A3gPaDCNfiqyZUStTMqIkKRshqPIuDOXv1hcBnD4U3l8cP0T1HMCfGRxQ6V64TGCcoswChANyOAwbQg==}
+
+  '@evolify/tiny@0.3.0':
+    resolution: {integrity: sha512-6WhL3VTEueRtYi/VHAS+TliAq9n+H7YsmELiF86ZgrZqDI0M/19dIB0nhOuQx+arje42fvXxBkNrZvrn9g5SxA==}
+    peerDependencies:
+      react: '>=18.0.0'
 
   '@floating-ui/core@1.7.2':
     resolution: {integrity: sha512-wNB5ooIKHQc+Kui96jE/n69rHFWAVoxn5CAzL1Xdd8FG03cgY3MLO+GF9U3W737fYDSgPWA6MReKhBQBop6Pcw==}
@@ -1322,6 +1330,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
     optional: true
+
+  '@evolify/tiny@0.3.0(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
 
   '@floating-ui/core@1.7.2':
     dependencies:

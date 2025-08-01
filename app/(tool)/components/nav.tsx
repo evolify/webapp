@@ -9,7 +9,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { usePathname } from "next/navigation"
-import { items } from "./config"
+import { menus } from "../../config"
 import { AppSidebarItem } from "@/components/app-sidebar"
 import { Fragment, useMemo } from "react"
 
@@ -31,23 +31,23 @@ function findBreadcrumb(pathname: string, items: AppSidebarItem[]) {
   return res
 }
 
-export default function Header() {
+export default function Nav() {
   const pathname = usePathname()
-  const list = useMemo(() => findBreadcrumb(pathname, items), [pathname])
+  const list = useMemo(() => findBreadcrumb(pathname, menus), [pathname])
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
         {list.map((item, index) =>
           index !== list.length - 1 ? (
-            <Fragment key={item.url}>
+            <Fragment key={index}>
               <BreadcrumbItem className="hidden md:block">
                 <BreadcrumbLink href={item.url}>{item.title}</BreadcrumbLink>{" "}
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
             </Fragment>
           ) : (
-            <BreadcrumbItem key={item.url}>
+            <BreadcrumbItem key={index}>
               <BreadcrumbPage>{item.title}</BreadcrumbPage>
             </BreadcrumbItem>
           )
