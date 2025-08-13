@@ -11,18 +11,20 @@ import { ArrowUpRight } from "lucide-react"
 export default function Home() {
   // 扁平化工具列表，包括子项
   const flattenTools = (items: any[]) => {
-    return items.reduce((acc: any[], item) => {
-      if (item.children) {
-        return [
-          ...acc,
-          ...item.children.map((child: any) => ({
-            ...child,
-            parentTitle: item.title,
-          })),
-        ]
-      }
-      return [...acc, item]
-    }, [])
+    return items
+      .reduce((acc: any[], item) => {
+        if (item.children) {
+          return [
+            ...acc,
+            ...item.children.map((child: any) => ({
+              ...child,
+              parentTitle: item.title,
+            })),
+          ]
+        }
+        return [...acc, item]
+      }, [])
+      .filter(t => t.url !== "/")
   }
 
   const allTools = flattenTools(menus)
@@ -63,8 +65,7 @@ export default function Home() {
                     <CardTitle>{tool.title}</CardTitle>
                   </div>
                   <CardDescription>
-                    {tool.description ||
-                      `使用${tool.title}工具提高您的工作效率`}
+                    {tool.desc || `使用${tool.title}工具提高您的工作效率`}
                   </CardDescription>
                 </CardHeader>
                 <ArrowUpRight className="group-hover:opacity-100 opacity-50 w-5 absolute right-2 top-2" />

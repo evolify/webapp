@@ -29,7 +29,7 @@ export function CalcDate({ from }: Props) {
   return (
     <Card className="mt-4">
       <CardHeader>
-        <CardTitle>计算天数</CardTitle>
+        <CardTitle>计算日期</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="flex flex-row gap-2">

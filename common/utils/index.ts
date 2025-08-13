@@ -24,3 +24,17 @@ export function startViewTransition(fn: () => void) {
     fn()
   }
 }
+
+export function debounce(fn: (...args: any[]) => void, delay = 300) {
+  let timer: NodeJS.Timeout
+  let isFirst = true
+  return (...args: any[]) => {
+    if (isFirst) {
+      isFirst = false
+      fn(...args)
+    } else {
+      clearTimeout(timer)
+      timer = setTimeout(() => fn(...args), delay)
+    }
+  }
+}

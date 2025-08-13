@@ -54,7 +54,7 @@ export function CalcDays({ from }: Props) {
       </CardHeader>
       <CardContent>
         <div className="flex flex-row gap-2">
-          <Label htmlFor="date">当前日期</Label>
+          <Label htmlFor="date">目标日期</Label>
           <DatePicker id="date" value={to} onChange={setTo} />
         </div>
         <div className="flex flex-row gap-2 mt-4">
