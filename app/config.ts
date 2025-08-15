@@ -1,11 +1,14 @@
 import {
   Calculator,
   Calendar,
+  CaseSensitive,
+  FileJson,
   Globe,
   Home,
   Languages,
   Palette,
   Pipette,
+  ScanSearch,
 } from "lucide-react"
 
 export const menus = [
@@ -18,6 +21,38 @@ export const menus = [
     title: "Favicon",
     url: "/favicon",
     icon: Globe,
+  },
+  {
+    title: "JSON",
+    icon: FileJson,
+    children: [
+      {
+        title: "Formatter",
+        url: "/json/formatter",
+        icon: FileJson,
+      },
+    ],
+  },
+  {
+    title: "Text",
+    icon: CaseSensitive,
+    children: [
+      {
+        title: "Base64",
+        url: "/text/base64",
+        icon: CaseSensitive,
+      },
+      {
+        title: "URL Codec",
+        url: "/text/url-codec",
+        icon: CaseSensitive,
+      },
+      {
+        title: "Regex Tester",
+        url: "/text/regex-tester",
+        icon: ScanSearch,
+      },
+    ],
   },
   {
     title: "Calendar",
