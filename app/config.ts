@@ -71,8 +71,8 @@ export const menus = [
         icon: Image,
       },
       {
-        title: "Cropper & Compressor",
-        url: "/image/cropper",
+        title: "Optimize",
+        url: "/image/optimize",
         icon: Crop,
       },
     ],
