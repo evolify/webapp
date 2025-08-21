@@ -2,6 +2,7 @@ import {
   Calculator,
   Calendar,
   CaseSensitive,
+  ClipboardCopy,
   Crop,
   FileJson,
   Globe,
@@ -103,6 +104,12 @@ export const menus = [
         url: "/color/picker",
       },
     ],
+  },
+  {
+    title: "Clipboard",
+    icon: ClipboardCopy,
+    url: "/clipboard",
+    desc: "A simple clipboard hub for text and image",
   },
   {
     title: "Translate",
