@@ -43,7 +43,7 @@ export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCar
 
   return (
     <Card
-      style={{viewTransitionName: `card-${item.timestamp}`}}
+      style={{ viewTransitionName: `card-${item.timestamp}` }}
       className={cn(
         "group relative p-0 gap-0 overflow-hidden focus-within:border-orange-400",
         preview && "row-span-3 col-span-3 row-start-1 col-start-1"
@@ -61,7 +61,10 @@ export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCar
           <img
             src={item.content}
             alt="Pasted image"
-            className="h-full w-full rounded-md object-cover"
+            className={cn(
+              "h-full w-full rounded-md object-cover",
+              preview && "object-contain"
+            )}
           />
         )}
       </CardContent>
@@ -85,9 +88,7 @@ export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCar
           <Trash2 className="h-4 w-4" />
         </Button>
         <Button variant="ghost" size="icon" onClick={togglePreview}>
-          {
-            preview ? <Minimize/> : <Maximize />
-          }
+          {preview ? <Minimize /> : <Maximize />}
         </Button>
       </CardFooter>
     </Card>

@@ -33,7 +33,7 @@ export default function ClipboardPage() {
       }
     } catch (error) {
       console.error("Failed to load items from localStorage", error)
-      toast.error("无法从本地存储加载历史记录。")
+      toast.error("Failed to load items from localStorage")
     }
   }, [])
 
@@ -42,7 +42,7 @@ export default function ClipboardPage() {
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(items))
     } catch (error) {
       console.error("Failed to save items to localStorage", error)
-      toast.error("无法将历史记录保存到本地存储。")
+      toast.error("Failed to save items to localStorage")
     }
   }, [items])
 
@@ -78,48 +78,52 @@ export default function ClipboardPage() {
         }
       }
       if (!done) {
-        toast.info("剪贴板中没有支持的内容（文本或图片）。")
+        toast.info("No supported content in clipboard (text or image).")
       }
     } catch (err) {
       console.error("Failed to read clipboard contents: ", err)
-      toast.error("读取剪贴板失败。请检查浏览器权限。")
+      toast.error("Failed to read clipboard. Please check browser permissions.")
     }
   }, [])
 
   const onDelete = useCallback((timestamp: number) => {
-    startViewTransition(()=> {
+    startViewTransition(() => {
       setItems(prev => prev.filter(item => item.timestamp !== timestamp))
     })
-    toast.success("项目已删除")
+    toast.success("Item deleted")
   }, [])
 
   const onCopy = useCallback(async (item: ClipboardItem) => {
     try {
       if (item.type === "text") {
         await navigator.clipboard.writeText(item.content)
-        toast.success("文本已复制到剪贴板")
+        toast.success("Text copied to clipboard")
       } else if (item.type === "image") {
         const response = await fetch(item.content)
         const blob = await response.blob()
         await navigator.clipboard.write([
           new ClipboardItem({ [blob.type]: blob }),
         ])
-        toast.success("图片已复制到剪贴板")
+        toast.success("Image copied to clipboard")
       }
     } catch (err) {
       console.error("Failed to copy: ", err)
-      toast.error("复制失败")
+      toast.error("Failed to copy")
     }
   }, [])
 
   const onClearAll = useCallback(() => {
     setItems([])
-    toast.success("所有项目已清除")
+    toast.success("All items cleared")
   }, [])
 
   const onChange = useCallback((timestamp: number, content: string) => {
-    startViewTransition(()=> {
-      setItems(prev => prev.map(item => item.timestamp === timestamp ? { ...item, content } : item))
+    startViewTransition(() => {
+      setItems(prev =>
+        prev.map(item =>
+          item.timestamp === timestamp ? { ...item, content } : item
+        )
+      )
     })
   }, [])
 
@@ -140,14 +144,14 @@ export default function ClipboardPage() {
     <div className="container mx-auto">
       <HeaderRight>
         <Button variant="outline" onClick={onPaste}>
-          粘贴 ⌘+V
+          Paste ⌘+V
         </Button>
         <Button
           variant="outline"
           className="ml-4 text-red-700"
           onClick={onClearAll}
         >
-          清空
+          Clear All
         </Button>
       </HeaderRight>
       <div className="grid auto-rows-[200px] [grid-template-columns:repeat(auto-fill,minmax(268px,1fr))] gap-4">
@@ -163,8 +167,8 @@ export default function ClipboardPage() {
       </div>
       {items.length === 0 && (
         <div className="text-center py-12 text-gray-500">
-          <p>这里空空如也。</p>
-          <p>点击“从剪贴板粘贴”或使用 Command/Ctrl + V 添加内容。</p>
+          <p>Nothing here.</p>
+          <p>Click "Paste" or use Command/Ctrl + V to add content.</p>
         </div>
       )}
     </div>
