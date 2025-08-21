@@ -14,11 +14,16 @@ interface ClipboardCardProps {
   onChange?: (content: string) => void
 }
 
-export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCardProps) {
+export default function ClipboardCard({
+  item,
+  onDelete,
+  onCopy,
+  onChange,
+}: ClipboardCardProps) {
   const [preview, setPreview] = useState(false)
 
   function togglePreview() {
-    startViewTransition(()=> {
+    startViewTransition(() => {
       setPreview(prev => !prev)
     })
   }
@@ -28,11 +33,14 @@ export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCar
   }
 
   // ⌘ + v in textarea will not trigger paste event
-  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === "v") {
-      e.stopPropagation()
-    }
-  }, [onCopy, item])
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "v") {
+        e.stopPropagation()
+      }
+    },
+    [onCopy, item]
+  )
 
   function download() {
     const a = document.createElement("a")
@@ -53,7 +61,7 @@ export function ClipboardCard({ item, onDelete, onCopy, onChange }: ClipboardCar
         {item.type === "text" ? (
           <textarea
             value={item.content}
-            className="h-full w-full p-2 resize-none border-none outline-none"
+            className="h-full w-full p-2 resize-none border-none outline-none whitespace-pre"
             onChange={handleChange}
             onKeyDown={handleKeyDown}
           />

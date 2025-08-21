@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { ClipboardCard } from "./components/clipboard-card"
+import ClipboardCard from "./components/clipboard-card"
 import type { ClipboardItem } from "./types"
 import { toast } from "sonner"
 import HeaderRight from "../components/header-right"
@@ -14,11 +14,11 @@ export default function ClipboardPage() {
   const [items, setItems] = useState<ClipboardItem[]>([])
 
   const add = useCallback((type: "text" | "image", content: string) => {
-    startViewTransition(()=> {
+    startViewTransition(() => {
       setItems(prev =>
         prev.concat({
-        timestamp: Date.now(),
-        type,
+          timestamp: Date.now(),
+          type,
           content,
         })
       )
@@ -118,13 +118,11 @@ export default function ClipboardPage() {
   }, [])
 
   const onChange = useCallback((timestamp: number, content: string) => {
-    startViewTransition(() => {
-      setItems(prev =>
-        prev.map(item =>
-          item.timestamp === timestamp ? { ...item, content } : item
-        )
+    setItems(prev =>
+      prev.map(item =>
+        item.timestamp === timestamp ? { ...item, content } : item
       )
-    })
+    )
   }, [])
 
   useEffect(() => {
